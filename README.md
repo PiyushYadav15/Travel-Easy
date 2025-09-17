@@ -36,12 +36,25 @@ A **Django-based Travel Management Application** that allows users to explore tr
 - **Frontend:** HTML, CSS (with Django Templates)
 - **Authentication:** Django built-in auth system
 📸 Demo Screenshots
+
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102523" src="https://github.com/user-attachments/assets/3bf0d0f1-e6bc-4376-9642-3aa77537d121" />
+
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102620" src="https://github.com/user-attachments/assets/a9f039cf-3c96-4afe-b10b-25d374d0d7e8" />
+
+
 🏠 Home Page
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102542" src="https://github.com/user-attachments/assets/6b7bdf1c-ac08-45e1-b703-34ea3955232f" />
 
 🌍 Destination List
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102605" src="https://github.com/user-attachments/assets/e2de3401-cc66-4e18-a551-8a703aafc1ac" />
+
 
 📖 Destination Detail
 
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 111521" src="https://github.com/user-attachments/assets/f9aa4861-cbdc-4de9-a543-3b389e517986" />
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102646" src="https://github.com/user-attachments/assets/81f451df-f0b3-4c29-a735-d3eb3058ec37" />
+
+<img width="1920" height="1200" alt="Screenshot 2025-09-17 102637" src="https://github.com/user-attachments/assets/2cf94c5b-7dd4-4957-9f2b-8e25f23c839e" />
 
 
 ---
