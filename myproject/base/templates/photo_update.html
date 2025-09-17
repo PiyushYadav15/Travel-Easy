@@ -1,0 +1,108 @@
+<style>
+
+
+/* Page Title */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #3a0ca3;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Form Styling */
+form {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Label and Input styling */
+form p {
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #7209b7;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    border-color: #f72585;
+    outline: none;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+    background: linear-gradient(90deg, #7209b7, #f72585);
+    color: white;
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+}
+
+form button:hover {
+    background: linear-gradient(90deg, #560bad, #b5179e);
+    transform: scale(1.05);
+}
+
+/* Back Link */
+a {
+    display: inline-block;
+    margin: 2rem auto 0;
+    text-align: center;
+    background: linear-gradient(90deg, #3a0ca3, #7209b7);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.4s ease, transform 0.2s ease;
+}
+
+a:hover {
+    background: linear-gradient(90deg, #560bad, #b5179e);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+{% extends 'main.html' %}
+{% block content %}
+<h2>Update Destinations</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+<a href="{% url 'photo_list' %}">Back to gallery</a>
+{% endblock %} 

@@ -1,0 +1,85 @@
+<style>
+/* Base Reset */
+/* Heading */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #3a0ca3;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Category List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+li {
+  background: #fff;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+  color: #560bad;
+  transition: transform 0.2s ease;
+  animation: fadeInUp 0.5s ease;
+}
+
+li:hover {
+  transform: translateX(5px);
+}
+
+/* Button Link Styling */
+a {
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+  padding: 0.7rem 1.3rem;
+  background: linear-gradient(90deg, #7209b7, #f72585);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 1rem;
+}
+
+a:hover {
+  background: linear-gradient(90deg, #560bad, #b5179e);
+  transform: scale(1.05);
+}
+
+/* Center buttons */
+a:first-of-type {
+  margin-left: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% extends 'main.html' %}
+{% block content %}
+<h2>Destination Category List</h2>
+
+<ul>
+  {% for i in data %}
+    <li>{{ i.name }}</li>
+  {% empty %}
+    <li>No categories available.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'create_category' %}">Add New Destination Category</a>
+<a href="{% url 'photo_create' %}">Add Destination</a>
+{% endblock %}

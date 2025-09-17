@@ -1,0 +1,91 @@
+<style>
+/* General reset and base styles */
+/* Title */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #3a0ca3;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Card container */
+form {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease;
+    text-align: center;
+}
+
+/* Message */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #7209b7;
+}
+
+/* Image preview */
+img {
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* Buttons */
+button[type="submit"],
+a {
+    text-decoration: none;
+    background: linear-gradient(90deg, #7209b7, #f72585);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+button:hover,
+a:hover {
+    background: linear-gradient(90deg, #560bad, #b5179e);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+{% extends 'main.html' %}
+{% block content %}
+<h2>Restore Destinations</h2>
+<p>Are sure you want to delete photo {{ data.title }}</p>
+<img src="{{ data.image.url }}" width="200">
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes,Restore</button>
+    <a href="{% url 'photo_history' %}">cancel</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+
+
+
+ {% extends 'main.html' %}
+{% block content %}
+
+<h2>Photo List</h2>
+<a href="{% url 'photo_create' %}">Add photo</a>
+<a href="{% url 'photo_history' %}">Photo History</a>
+
+<form method="GET">
+    <select name="category_id" onchange="this.form.submit()">
+        <option value="">All Categories</option>
+        {% for i in data %}
+            <option value="{{ i.id }}" {% if i.id|stringformat:"s" == request.GET.category_id %}selected{% endif %}>
+                {{ i.name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<div class="grid grid-cols-3 gap-4 mt-4">
+    <ul>
+    {% for photo in data1 %}
+        <li>
+            <img src="{{ photo.image.url }}" alt="{{ photo.name }}">
+            <h3>{{ photo.name }}</h3>
+            <p><strong>Country:</strong> {{ photo.country }}</p>
+            <a href="{% url 'photo_detail' photo.id %}">View Details</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

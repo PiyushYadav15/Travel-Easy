@@ -1,0 +1,137 @@
+<style>
+/* Base styles */
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #3a0ca3;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Back link */
+a[href*="photo_list"] {
+    display: inline-block;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #7209b7, #f72585);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+a[href*="photo_list"]:hover {
+    background: linear-gradient(90deg, #560bad, #b5179e);
+    transform: scale(1.05);
+}
+
+/* History list layout */
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0;
+}
+
+/* Destination item card */
+ul li {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease;
+    transition: transform 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateY(-5px);
+}
+
+/* Image */
+ul li img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+ul li img:hover {
+    transform: scale(1.05);
+}
+
+/* Text */
+ul li {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Date info */
+ul li span {
+    color: #999;
+}
+
+/* Action buttons */
+ul li a[href*="restore"],
+ul li a[href*="permanent"] {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+ul li a[href*="restore"] {
+    background: linear-gradient(90deg, #38b000, #70e000);
+}
+
+ul li a[href*="restore"]:hover {
+    background: linear-gradient(90deg, #2d6a4f, #52b788);
+    transform: scale(1.05);
+}
+
+ul li a[href*="permanent"] {
+    background: linear-gradient(90deg, #d00000, #ff6b6b);
+}
+
+ul li a[href*="permanent"]:hover {
+    background: linear-gradient(90deg, #9d0208, #e5383b);
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+{% extends 'main.html' %}
+{% block content %}
+<h2>Destinations History</h2>
+<a href="{% url 'photo_list' %}">Back to photo list</a>
+<ul>
+    {% for i in data %}
+      <li>
+        <img src="{{i.image.url}}" width="100">
+
+        {{i.title}} (deleted at: {{i.deleted_at}})
+        <a href="{% url 'restore' i.id %}">Restore</a>
+        <a href="{% url 'permanent' i.id %}">Parmanent delete</a>
+      </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
